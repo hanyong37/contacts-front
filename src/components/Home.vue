@@ -2,6 +2,7 @@
   <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
   <h2>Contacts List</h2>
+  <!--<p>{{ contacts }}</p>-->
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -14,11 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+        <tr v-for='c in contacts'>
+          <td>{{ c.id }}</td>
+          <td>{{ c.first_name }}</td>
+          <td>{{ c.last_name }}</td>
+          <td>{{ c.email }}</td>
           <td>
             <button type="button" class="btn btn-sm btn-secondary">View</button>
             <router-link to='/edit' class='btn btn-sm btn-warning'>Edit</router-link>
@@ -32,11 +33,19 @@
 </template>
 
 <script>
+
 export default {
   name: 'home',
+  created: function () {
+    this.$http.get('http://localhost:8089/contacts').then(
+      response => { this.contacts = response.body },
+      () => { console.log('failed') }
+    )
+  },
   data () {
     return {
-      msg: ' This is home page!!'
+      msg: ' This is home page!!',
+      contacts: []
     }
   }
 }

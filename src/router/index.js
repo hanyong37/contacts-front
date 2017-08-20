@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(Router)
 Vue.use(VueResource)
+Vue.http.options.root = '/root'
 
 export default new Router({
   linkActiveClass: 'active',
