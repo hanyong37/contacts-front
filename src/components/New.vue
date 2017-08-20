@@ -1,6 +1,6 @@
 <template>
   <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-  <h2>Edit Contacts</h2>
+  <h2>New Contacts</h2>
 
   <form>
     <div class="form-group">
@@ -38,10 +38,10 @@
 
 <script>
 export default {
-  name: 'edit',
+  name: 'new',
   data () {
     return {
-      msg: ' This is edit page!!'
+      msg: 'This is new page!!'
     }
   }
 }
