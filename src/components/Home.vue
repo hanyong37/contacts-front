@@ -33,11 +33,12 @@
 </template>
 
 <script>
+var contactUrl = 'http://localhost:8089/contacts{/id}'
 
 export default {
   name: 'home',
   created: function () {
-    this.$http.get('http://localhost:8089/contacts').then(
+    this.$resource(contactUrl).get().then(
       response => { this.contacts = response.body },
       () => { console.log('failed') }
     )
