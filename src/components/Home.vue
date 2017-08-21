@@ -23,7 +23,7 @@
           <td>
             <router-link :to="{ path: '/contact/'+c.id}" class='btn btn-sm btn-secondary'>View</router-link>
             <router-link :to="{ path: '/contact/'+c.id+'/edit'}" class='btn btn-sm btn-warning'>Edit</router-link>
-            <button type="button" class="btn btn-sm btn-danger">Delete</button>
+            <button type="button" @click='deleteItem(c.id)' class="btn btn-sm btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -43,9 +43,26 @@ export default {
       () => { console.log('failed') }
     )
   },
+  methods: {
+    loadList: function () {
+      this.$resource(this.contactUrl()).get().then(
+        response => { this.contacts = response.body },
+        () => { console.log('failed') }
+      )
+    },
+
+    deleteItem: function (targetId) {
+      this.$resource(this.contactUrl()).delete({id: targetId}).then(
+        response => {
+          alert('Delete contact success!!')
+          this.loadList()
+        },
+        () => { alert('failed') }
+      )
+    }
+  },
   data () {
     return {
-      msg: ' This is home page!!',
       contacts: []
     }
   }
