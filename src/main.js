@@ -6,10 +6,12 @@ import router from './router'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import BootstrapVue from 'bootstrap-vue'
+import VeeValidate from 'vee-validate'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.prototype.contactUrl = () => { return 'http://localhost:8089/contacts{/id}' }
+Vue.use(VeeValidate)
 
 /* eslint-disable no-new */
 new Vue({

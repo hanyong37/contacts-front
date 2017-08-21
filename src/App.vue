@@ -161,4 +161,17 @@ h1 {
   line-height: 60px;
   background-color: #f5f5f5;
 }
+
+.input.is-danger, .textarea.is-danger {
+  border-color: #ff3860;
+}
+
+.help.is-danger {
+  color: #ff3860;
+}
+.help {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
 </style>
