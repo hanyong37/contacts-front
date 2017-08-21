@@ -3,29 +3,8 @@
   <h2>Create New Contacts</h2>
 
   <form @submit='create' >
-    <div class="form-group">
-      <label for="exampleInputEmail1">First Name</label>
-      <p>{{ contact.first_name }}</p>
-      <input type="text" class="form-control" id="" v-model='contact.first_name' :value='contact.first_name' placeholder="Enter First Name">
-    </div>
-
-    <div class="form-group">
-      <label for="exampleInputEmail1">Last Name</label>
-      <input type="text" class="form-control" id="" v-model='contact.last_name' :value='contact.last_name' placeholder="Enter Last Name">
-    </div>
-
-
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="text" class="form-control" id="" v-model='contact.email' :value='contact.email' placeholder="Enter Email">
-    </div>
-
-    <div class="form-group">
-      <label for="exampleTextarea">Description</label>
-      <textarea class="form-control" v-model='contact.description' :value='contact.description' id="exampleTextarea" rows="3"></textarea>
-    </div>
-
-    <router-link class='btn btn-secondary' to='/contacts'>Back to List</router-link>
+    <contact-form :contact="contact"></contact-form>
+    <back-to-list></back-to-list>
     <button type='submit' class="btn btn-primary">Create</button>
   </form>
   </main>
@@ -40,8 +19,9 @@ export default {
       this.$resource(this.contactUrl()).save(this.contact).then(
         response => {
           alert('created contact success!')
+          this.$router.push('/contacts')
         },
-        () => { console.log('failed') }
+        () => { alert('created contact failed') }
       )
     }
   },
