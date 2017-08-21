@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <router-link class='btn btn-sm btn-secondary' to='/contacts'>Back to List</router-link>
+  <router-link class='btn btn-secondary' to='/contacts'>Back to List</router-link>
 
   </main>
 </template>

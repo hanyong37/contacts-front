@@ -2,7 +2,7 @@
   <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
   <h2>Contacts List</h2>
-  <!--<p>{{ contacts }}</p>-->
+  <!--<p>{{ this.contactUrl() }}</p>-->
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -22,7 +22,7 @@
           <td>{{ c.email }}</td>
           <td>
             <router-link :to="{ path: '/contact/'+c.id}" class='btn btn-sm btn-secondary'>View</router-link>
-            <router-link to='/edit' class='btn btn-sm btn-warning'>Edit</router-link>
+            <router-link :to="{ path: '/contact/'+c.id+'/edit'}" class='btn btn-sm btn-warning'>Edit</router-link>
             <button type="button" class="btn btn-sm btn-danger">Delete</button>
           </td>
         </tr>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-var contactUrl = 'http://localhost:8089/contacts{/id}'
+// var contactUrl = 'http://localhost:8089/contacts{/id}'
 
 export default {
   name: 'home',
   created: function () {
-    this.$resource(contactUrl).get().then(
+    this.$resource(this.contactUrl()).get().then(
       response => { this.contacts = response.body },
       () => { console.log('failed') }
     )

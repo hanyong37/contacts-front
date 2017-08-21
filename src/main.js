@@ -9,6 +9,7 @@ import BootstrapVue from 'bootstrap-vue'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
+Vue.prototype.contactUrl = () => { return 'http://localhost:8089/contacts{/id}' }
 
 /* eslint-disable no-new */
 new Vue({
