@@ -21,7 +21,7 @@
           <td>{{ c.last_name }}</td>
           <td>{{ c.email }}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-secondary">View</button>
+            <router-link :to="{ path: '/contact/'+c.id}" class='btn btn-sm btn-secondary'>View</router-link>
             <router-link to='/edit' class='btn btn-sm btn-warning'>Edit</router-link>
             <button type="button" class="btn btn-sm btn-danger">Delete</button>
           </td>
