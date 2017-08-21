@@ -1,6 +1,11 @@
 # contacts-front
 
-> A Vue.js project
+> A Vue.js front end project for simple contact management by Chen Xi, 2017
+> Initialized by `vue init webpack`.
+> To run the app need RESTFul backend api
+> To change value of Vlue.prototype.contactUrl in main.js to adapt api url,
+> for example:
+>      Vue.prototype.contactUrl = () => { return 'http://localhost:8089/contacts{/id}' }
 
 ## Build Setup
 
@@ -8,7 +13,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# running the app at localhost:8080
 npm run dev
 
 # build for production with minification

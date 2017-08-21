@@ -1,3 +1,4 @@
+<!--this component include input controls and validate logic which are used by Edit and New-->
 <template>
   <div>
     <div class="form-group">
@@ -41,6 +42,7 @@
 
 <script>
 export default {
+  // hold referfence to parent contact obj
   props: ['contact'],
   name: 'ContractFormControls'
 }

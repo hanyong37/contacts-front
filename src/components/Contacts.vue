@@ -1,8 +1,7 @@
 <template>
   <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-
   <h2>Contacts List</h2>
-  <!--<p>{{ this.contactUrl() }}</p>-->
+
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -33,41 +32,38 @@
 </template>
 
 <script>
-// var contactUrl = 'http://localhost:8089/contacts{/id}'
-
-export default {
-  name: 'home',
-  created: function () {
-    this.$resource(this.contactUrl()).get().then(
-      response => { this.contacts = response.body },
-      () => { console.log('failed') }
-    )
-  },
-  methods: {
-    loadList: function () {
-      this.$resource(this.contactUrl()).get().then(
-        response => { this.contacts = response.body },
-        () => { console.log('failed') }
-      )
+  export default {
+    name: 'contacts',
+    // When page was created, get contact list from api.
+    created: function () {
+      let self = this
+      self.loadList()
     },
+    methods: {
+      // Refreshe contact list, resuable
+      loadList: function () {
+        this.$resource(this.contactUrl()).get().then(
+          response => { this.contacts = response.body },
+          () => { console.log('failed') }
+        )
+      },
 
-    deleteItem: function (targetId) {
-      this.$resource(this.contactUrl()).delete({id: targetId}).then(
-        response => {
-          alert('Delete contact success!!')
-          this.loadList()
-        },
-        () => { alert('failed') }
-      )
-    }
-  },
-  data () {
-    return {
-      contacts: []
+      deleteItem: function (targetId) {
+        if (confirm('do you want to delete this contact?')) {
+          this.$resource(this.contactUrl()).delete({id: targetId}).then(
+            response => {
+              this.loadList()
+              alert('Delete contact success!!')
+            },
+            () => { alert('Delete contact failed') }
+          )
+        }
+      }
+    },
+    data () {
+      return {
+        contacts: []
+      }
     }
   }
-}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>

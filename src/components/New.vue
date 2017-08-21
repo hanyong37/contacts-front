@@ -3,7 +3,10 @@
   <h2>Create New Contacts</h2>
 
   <form @submit='create' >
+    <!--reuse form controls and validate logic-->
     <contact-form :contact="contact"></contact-form>
+
+    <!--reusable link component-->
     <back-to-list></back-to-list>
     <button type='submit' class="btn btn-primary">Create</button>
   </form>
@@ -14,6 +17,7 @@
 export default {
   name: 'edit',
   methods: {
+    // when form submtted, will post current data to api to create new contact
     create: function () {
       console.log('button clicked' + this.name)
       this.$resource(this.contactUrl()).save(this.contact).then(
@@ -37,6 +41,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
