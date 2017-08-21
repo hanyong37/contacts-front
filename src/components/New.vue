@@ -14,8 +14,11 @@
 </template>
 
 <script>
+import ContactForm from '@/components/Form'
+
 export default {
   name: 'edit',
+  components: {'contact-form': ContactForm},
   methods: {
     // when form submtted, will post current data to api to create new contact
     create: function () {
